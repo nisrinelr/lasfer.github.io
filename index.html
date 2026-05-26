@@ -1,451 +1,472 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Professional Developer Portfolio - Nisrine Elr">
-    <meta name="keywords" content="developer, portfolio, projects, skills">
-    <title>Nisrine Elr - Full Stack Developer</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nisrine Lasfer — Robotics Researcher</title>
+<meta name="description" content="Robotics researcher and backend engineer. Simulation, perception, and real-robot control. IMIS Laboratory.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0e1116;
+    --bg-elev: #161b22;
+    --border: #21262d;
+    --text: #e6edf3;
+    --text-dim: #8b949e;
+    --accent: #58a6ff;
+    --accent-soft: rgba(88, 166, 255, 0.12);
+    --mono: 'JetBrains Mono', ui-monospace, monospace;
+    --sans: 'Inter', -apple-system, system-ui, sans-serif;
+  }
+  @media (prefers-color-scheme: light) {
+    :root {
+      --bg: #ffffff;
+      --bg-elev: #f6f8fa;
+      --border: #d0d7de;
+      --text: #1f2328;
+      --text-dim: #59636e;
+      --accent: #0969da;
+      --accent-soft: rgba(9, 105, 218, 0.08);
+    }
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: var(--sans);
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+  }
+  .container {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 80px 32px 120px;
+  }
+  @media (max-width: 600px) {
+    .container { padding: 56px 20px 80px; }
+  }
+
+  /* ===== HEADER ===== */
+  header {
+    margin-bottom: 56px;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 32px;
+  }
+  h1 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-bottom: 8px;
+  }
+  .role {
+    font-size: 1.1rem;
+    color: var(--text-dim);
+    margin-bottom: 20px;
+  }
+  .contact {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    font-size: 0.92rem;
+    color: var(--text-dim);
+  }
+  .contact a {
+    color: var(--text-dim);
+    text-decoration: none;
+    transition: color 0.15s;
+  }
+  .contact a:hover { color: var(--accent); }
+  .contact .sep { opacity: 0.5; }
+
+  /* ===== SECTIONS ===== */
+  section { margin-bottom: 56px; }
+  h2 {
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--accent);
+    margin-bottom: 24px;
+    font-family: var(--mono);
+  }
+  p { margin-bottom: 16px; color: var(--text); }
+  .lead { font-size: 1.05rem; color: var(--text); }
+
+  /* ===== EXPERIENCE ENTRIES ===== */
+  .entry {
+    margin-bottom: 36px;
+    padding-bottom: 28px;
+    border-bottom: 1px solid var(--border);
+  }
+  .entry:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+  .entry-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 16px;
+    margin-bottom: 4px;
+    flex-wrap: wrap;
+  }
+  .entry-title {
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--text);
+  }
+  .entry-dates {
+    font-family: var(--mono);
+    font-size: 0.82rem;
+    color: var(--text-dim);
+    white-space: nowrap;
+  }
+  .entry-org {
+    color: var(--text-dim);
+    font-size: 0.95rem;
+    margin-bottom: 12px;
+  }
+  .entry-tagline {
+    font-size: 0.92rem;
+    color: var(--text-dim);
+    font-style: italic;
+    margin-bottom: 14px;
+  }
+  ul { list-style: none; }
+  li {
+    position: relative;
+    padding-left: 20px;
+    margin-bottom: 8px;
+    color: var(--text);
+    font-size: 0.95rem;
+  }
+  li::before {
+    content: "›";
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-weight: 600;
+  }
+
+  /* ===== PROJECT CARDS ===== */
+  .projects {
+    display: grid;
+    gap: 16px;
+  }
+  .project {
+    background: var(--bg-elev);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px 22px;
+    transition: border-color 0.15s, transform 0.15s;
+  }
+  .project:hover { border-color: var(--accent); }
+  .project-title {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+  .project-stack {
+    font-family: var(--mono);
+    font-size: 0.78rem;
+    color: var(--text-dim);
+    margin-bottom: 12px;
+  }
+  .project p { font-size: 0.92rem; margin-bottom: 8px; }
+  .project-links {
+    margin-top: 10px;
+    font-size: 0.85rem;
+  }
+  .project-links a {
+    color: var(--accent);
+    text-decoration: none;
+    margin-right: 16px;
+  }
+  .project-links a:hover { text-decoration: underline; }
+
+  /* ===== SKILLS ===== */
+  .skills-grid {
+    display: grid;
+    gap: 12px;
+  }
+  .skill-row {
+    display: grid;
+    grid-template-columns: 180px 1fr;
+    gap: 16px;
+    font-size: 0.92rem;
+  }
+  @media (max-width: 600px) {
+    .skill-row { grid-template-columns: 1fr; gap: 4px; }
+  }
+  .skill-label {
+    color: var(--text-dim);
+    font-family: var(--mono);
+    font-size: 0.82rem;
+  }
+  .skill-values { color: var(--text); }
+
+  /* ===== DEMO VIDEO ===== */
+  .demo-video {
+    margin: 0 0 8px;
+  }
+  .demo-video video {
+    width: 100%;
+    display: block;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    background: var(--bg-elev);
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+  }
+  .demo-video figcaption {
+    margin-top: 10px;
+    font-size: 0.85rem;
+    color: var(--text-dim);
+    font-style: italic;
+    text-align: center;
+  }
+
+  /* ===== FOOTER ===== */
+  footer {
+    margin-top: 80px;
+    padding-top: 32px;
+    border-top: 1px solid var(--border);
+    font-size: 0.85rem;
+    color: var(--text-dim);
+    text-align: center;
+  }
+  footer a { color: var(--accent); text-decoration: none; }
+</style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="container">
-            <div class="nav-brand">Nisrine Elr</div>
-            <ul class="nav-menu">
-                <li><a href="#home" class="nav-link">Home</a></li>
-                <li><a href="#about" class="nav-link">About</a></li>
-                <li><a href="#skills" class="nav-link">Skills</a></li>
-                <li><a href="#projects" class="nav-link">Projects</a></li>
-                <li><a href="#experience" class="nav-link">Experience</a></li>
-                <li><a href="#contact" class="nav-link">Contact</a></li>
-            </ul>
-            <div class="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
+<div class="container">
+
+  <!-- HEADER -->
+  <header>
+    <h1>Nisrine Lasfer</h1>
+    <p class="role">Robotics Researcher · Simulation, Perception & Backend AI</p>
+    <div class="contact">
+      <span>Agadir, Morocco</span>
+      <span class="sep">·</span>
+      <a href="mailto:lasfernisrine@gmail.com">lasfernisrine@gmail.com</a>
+      <span class="sep">·</span>
+      <a href="https://linkedin.com/in/nisrine-lasfer" target="_blank" rel="noopener">LinkedIn</a>
+      <span class="sep">·</span>
+      <a href="https://github.com/nisrinelr" target="_blank" rel="noopener">GitHub</a>
+      <span class="sep">·</span>
+      <a href="./Nisrine_Lasfer_CV.pdf" target="_blank">CV (PDF)</a>
+    </div>
+  </header>
+
+  <!-- ABOUT -->
+  <section>
+    <h2>About</h2>
+    <p class="lead">
+      Robotics researcher and backend engineer with 1 year of hands-on robotics work contributing to a doctoral research program at IMIS Laboratory, and 2+ years of production Python development.
+    </p>
+    <p>
+      I build full robotics stacks — from URDF modeling and simulation to YOLOv8 perception and real-arm deployment. My current work focuses on closing the sim-to-real gap on a Han's Elfin3 6-DoF manipulator for autonomous tomato harvesting. Currently expanding into MuJoCo and NVIDIA Isaac Sim.
+    </p>
+  </section>
+
+  <!-- DEMO VIDEO -->
+  <section>
+    <h2>Demo</h2>
+    <figure class="demo-video">
+      <video autoplay loop muted playsinline preload="metadata" poster="elfin3_poster.jpg">
+        <source src="elfin3_demo.mp4" type="video/mp4">
+        Your browser does not support the video tag. <a href="elfin3_demo.mp4">Download the demo</a>.
+      </video>
+      <figcaption>Elfin3 real-time control via MoveIt2 — calibration validation and RViz teleoperation.</figcaption>
+    </figure>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section>
+    <h2>Experience</h2>
+
+    <div class="entry">
+      <div class="entry-head">
+        <div class="entry-title">Robotics Researcher — Simulation, Perception & Real-Robot Control</div>
+        <div class="entry-dates">Jun 2025 — Jun 2026</div>
+      </div>
+      <div class="entry-org">IMIS Laboratory (Doctoral Research Program), Faculty of Applied Sciences Ait Melloul</div>
+      <div class="entry-tagline">End-to-end harvesting robot pipeline: simulation, perception, and real-hardware deployment on a Han's Elfin3 6-DoF manipulator.</div>
+      <ul>
+        <li>Built a Gazebo simulation of the tomato-harvesting robot on ROS2 Humble; iteratively refined the URDF (joint limits, link inertias, collision geometry, gripper kinematics) to achieve stable control quality and physically plausible contact behavior.</li>
+        <li>Deployed and brought up the real Elfin3 manipulator end-to-end: authored the missing calibration file from scratch, validated against measured ground truth, and achieved real-time teleoperation from RViz through MoveIt2.</li>
+        <li>Architected a ROS2 Humble master–slave control system where ROS2 acts as master and the robot joints as slaves, ensuring deterministic command dispatch from planner to hardware.</li>
+        <li>Trained and deployed a YOLOv8 model for tomato maturity and grasp-pose detection (mAP = 0.8), exported to ONNX, trained on NVIDIA Tesla T4 with CUDA 12.4.</li>
+        <li>Earlier phase: built the initial simulation in RoboDK with inverse-kinematics trajectory validation — then migrated to Gazebo + ROS2 for tighter middleware integration.</li>
+        <li>Co-authored a state-of-the-art review (2019–2025) on agricultural robotics for automated greenhouse harvesting; follow-up paper currently under peer review.</li>
+      </ul>
+    </div>
+
+    <div class="entry">
+      <div class="entry-head">
+        <div class="entry-title">Backend Developer (Freelance, Remote)</div>
+        <div class="entry-dates">Mar 2024 — Dec 2024</div>
+      </div>
+      <div class="entry-org">Niloom.ai — New York, US</div>
+      <ul>
+        <li>Shipped 12+ production features over 10 months for an AR/VR storytelling platform.</li>
+        <li>Designed and built Niloom GPT — a GPT-powered app converting user storytelling into interactive AR/VR scenes via backend APIs.</li>
+        <li>Integrated ElevenLabs voice cloning API and AUTH0 for GDPR-compliant access management.</li>
+        <li>Built n8n workflows wired through Google Sheets webhooks (Google Apps Script).</li>
+        <li>Collaborated asynchronously across Front-End, ML/AI, Unity, Design, and Marketing teams under Agile/Scrum.</li>
+      </ul>
+    </div>
+
+    <div class="entry">
+      <div class="entry-head">
+        <div class="entry-title">Back-End Developer (Freelance, Remote)</div>
+        <div class="entry-dates">Jul 2023 — Aug 2024</div>
+      </div>
+      <div class="entry-org">UpWork</div>
+      <ul>
+        <li>Designed and deployed a Django/React employee management system on AWS (EC2, Elastic Beanstalk).</li>
+        <li>Built a Python pipeline for large-file uploads to DigitalOcean; trained 6+ clients on Django and CodeRed CMS.</li>
+      </ul>
+    </div>
+
+    <div class="entry">
+      <div class="entry-head">
+        <div class="entry-title">Back-End Developer</div>
+        <div class="entry-dates">Apr 2023 — Sep 2023</div>
+      </div>
+      <div class="entry-org">Faculty of Applied Sciences Ait Melloul</div>
+      <ul>
+        <li>Built an intelligent chatbot in Python (LangChain, Streamlit, GPT-3.5 Turbo API) automating responses to recurring administrative queries.</li>
+        <li>Developed a multi-role school management system (Django, Tailwind CSS) for grades and self-service student access.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section>
+    <h2>Selected Projects</h2>
+    <div class="projects">
+
+      <div class="project">
+        <div class="project-title">Tomato Harvesting Robot — Sim-to-Real Pipeline</div>
+        <div class="project-stack">ROS2 Humble · Gazebo · URDF · MoveIt2 · YOLOv8 · ONNX · Elfin3</div>
+        <p>End-to-end pipeline from URDF modeling to perception-driven grasp planning and real-hardware validation. Iteratively reduced sim-to-real gap by refining link inertias, joint friction, and gripper compliance.</p>
+        <div class="project-links">
+          <a href="#">GitHub →</a>
+          <a href="#">Demo video →</a>
         </div>
-    </nav>
+      </div>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="hero-content">
-            <h1 class="hero-title">Hi, I'm Nisrine Elr</h1>
-            <p class="hero-subtitle">Full Stack Developer | Problem Solver | Open Source Enthusiast</p>
-            <p class="hero-description">
-                Passionate about building elegant solutions to complex problems using modern web technologies.
-                Always learning, always growing.
-            </p>
-            <div class="hero-cta">
-                <a href="#projects" class="btn btn-primary">View My Work</a>
-                <a href="#contact" class="btn btn-secondary">Get In Touch</a>
-            </div>
-            <div class="social-links">
-                <a href="https://github.com/nisrinelr" target="_blank" rel="noopener noreferrer">
-                    <i class="fab fa-github"></i>
-                </a>
-                <a href="https://linkedin.com/in/nisrine-elr" target="_blank" rel="noopener noreferrer">
-                    <i class="fab fa-linkedin"></i>
-                </a>
-                <a href="https://twitter.com/nisrinelr" target="_blank" rel="noopener noreferrer">
-                    <i class="fab fa-twitter"></i>
-                </a>
-                <a href="mailto:contact@nisrine.dev">
-                    <i class="fas fa-envelope"></i>
-                </a>
-            </div>
+      <div class="project">
+        <div class="project-title">Elfin3 Calibration & Real-Time Control</div>
+        <div class="project-stack">ROS2 Humble · MoveIt2 · RViz · ros2_control</div>
+        <p>Authored the calibration configuration the vendor did not ship. Validated through repeatability tests. Real-time motion from RViz interactive markers through MoveIt2 to the physical arm.</p>
+        <div class="project-links">
+          <a href="#">GitHub →</a>
         </div>
-    </section>
+      </div>
 
-    <!-- About Section -->
-    <section id="about" class="about">
-        <div class="container">
-            <h2 class="section-title">About Me</h2>
-            <div class="about-content">
-                <div class="about-text">
-                    <p>
-                        I'm a dedicated full-stack developer with a passion for creating intuitive, 
-                        high-performance web applications. With expertise in modern JavaScript frameworks 
-                        and backend technologies, I enjoy turning ideas into reality through clean, 
-                        maintainable code.
-                    </p>
-                    <p>
-                        When I'm not coding, you can find me exploring new technologies, contributing 
-                        to open-source projects, or sharing knowledge with the developer community.
-                    </p>
-                    <div class="about-stats">
-                        <div class="stat">
-                            <h3>5+</h3>
-                            <p>Years of Experience</p>
-                        </div>
-                        <div class="stat">
-                            <h3>50+</h3>
-                            <p>Projects Completed</p>
-                        </div>
-                        <div class="stat">
-                            <h3>100%</h3>
-                            <p>Client Satisfaction</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+      <div class="project">
+        <div class="project-title">Niloom GPT — Storytelling to AR/VR Scenes</div>
+        <div class="project-stack">Python · GPT API · Django · REST</div>
+        <p>Backend-driven application converting user storytelling input into interactive AR/VR scenes through orchestrated API calls.</p>
+      </div>
 
-    <!-- Skills Section -->
-    <section id="skills" class="skills">
-        <div class="container">
-            <h2 class="section-title">Skills & Technologies</h2>
-            
-            <div class="skills-grid">
-                <div class="skill-category">
-                    <h3>Frontend</h3>
-                    <div class="skill-tags">
-                        <span class="skill-tag">JavaScript</span>
-                        <span class="skill-tag">TypeScript</span>
-                        <span class="skill-tag">React</span>
-                        <span class="skill-tag">Vue.js</span>
-                        <span class="skill-tag">HTML5</span>
-                        <span class="skill-tag">CSS3</span>
-                        <span class="skill-tag">Tailwind CSS</span>
-                    </div>
-                </div>
+    </div>
+  </section>
 
-                <div class="skill-category">
-                    <h3>Backend</h3>
-                    <div class="skill-tags">
-                        <span class="skill-tag">Node.js</span>
-                        <span class="skill-tag">Python</span>
-                        <span class="skill-tag">Express</span>
-                        <span class="skill-tag">Django</span>
-                        <span class="skill-tag">REST APIs</span>
-                        <span class="skill-tag">GraphQL</span>
-                    </div>
-                </div>
+  <!-- SKILLS -->
+  <section>
+    <h2>Technical Skills</h2>
+    <div class="skills-grid">
+      <div class="skill-row">
+        <div class="skill-label">simulation</div>
+        <div class="skill-values">Gazebo (ROS2), RoboDK · learning MuJoCo, NVIDIA Isaac Sim</div>
+      </div>
+      <div class="skill-row">
+        <div class="skill-label">middleware</div>
+        <div class="skill-values">ROS2 Humble, ROS1, MoveIt2, MoveIt, RViz, ros2_control</div>
+      </div>
+      <div class="skill-row">
+        <div class="skill-label">modeling</div>
+        <div class="skill-values">URDF, Xacro, kinematic-chain validation, 6-DoF calibration</div>
+      </div>
+      <div class="skill-row">
+        <div class="skill-label">foundations</div>
+        <div class="skill-values">Rigid-body dynamics, contact mechanics, IK/FK, classical control</div>
+      </div>
+      <div class="skill-row">
+        <div class="skill-label">languages</div>
+        <div class="skill-values">Python, C, C++, Java</div>
+      </div>
+      <div class="skill-row">
+        <div class="skill-label">ai / perception</div>
+        <div class="skill-values">YOLOv8, ONNX, OpenCV, PyTorch, CUDA, LangChain, GPT API</div>
+      </div>
+      <div class="skill-row">
+        <div class="skill-label">backend / cloud</div>
+        <div class="skill-values">Django, Flask, React, REST, AWS, Docker, Git, CI/CD</div>
+      </div>
+      <div class="skill-row">
+        <div class="skill-label">databases</div>
+        <div class="skill-values">PostgreSQL, MySQL, MongoDB, Redis, DynamoDB</div>
+      </div>
+    </div>
+  </section>
 
-                <div class="skill-category">
-                    <h3>Databases & Tools</h3>
-                    <div class="skill-tags">
-                        <span class="skill-tag">MongoDB</span>
-                        <span class="skill-tag">PostgreSQL</span>
-                        <span class="skill-tag">Git</span>
-                        <span class="skill-tag">Docker</span>
-                        <span class="skill-tag">AWS</span>
-                        <span class="skill-tag">CI/CD</span>
-                    </div>
-                </div>
+  <!-- EDUCATION -->
+  <section>
+    <h2>Education</h2>
+    <div class="entry">
+      <div class="entry-head">
+        <div class="entry-title">Master's in Embedded AI (in progress)</div>
+        <div class="entry-dates">2024 — 2026</div>
+      </div>
+      <div class="entry-org">Faculty of Applied Sciences Ait Melloul</div>
+      <p style="font-size: 0.9rem; color: var(--text-dim);">DataOps / MLOps · Deep Learning · SoC · Fog/Edge Computing · NLP · TinyML · GenAI</p>
+    </div>
+    <div class="entry">
+      <div class="entry-head">
+        <div class="entry-title">Bachelor in Math & CS — Data Science</div>
+        <div class="entry-dates">2022 — 2023</div>
+      </div>
+      <div class="entry-org">Faculty of Applied Sciences Ait Melloul</div>
+    </div>
+    <div class="entry">
+      <div class="entry-head">
+        <div class="entry-title">DEUG in Math & CS — Software Engineering</div>
+        <div class="entry-dates">2020 — 2022</div>
+      </div>
+      <div class="entry-org">Faculté des Sciences, Agadir</div>
+    </div>
+    <div class="entry">
+      <div class="entry-head">
+        <div class="entry-title">DUT in Computer Engineering</div>
+        <div class="entry-dates">2017 — 2019</div>
+      </div>
+      <div class="entry-org">High School of Technology, Laâyoune</div>
+    </div>
+  </section>
 
-                <div class="skill-category">
-                    <h3>Soft Skills</h3>
-                    <div class="skill-tags">
-                        <span class="skill-tag">Problem Solving</span>
-                        <span class="skill-tag">Team Collaboration</span>
-                        <span class="skill-tag">Communication</span>
-                        <span class="skill-tag">Project Management</span>
-                        <span class="skill-tag">Mentoring</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+  <!-- PUBLICATIONS -->
+  <section>
+    <h2>Publications</h2>
+    <ul>
+      <li>Lasfer, N. et al. <em>"A Review of Harvester Robots in Complex Environments Using ROS for Real-Time Control and Deployment."</em> Under peer review.</li>
+      <li>State-of-the-art review (2019–2025) on agricultural robotics for automated greenhouse harvesting — IMIS Laboratory.</li>
+    </ul>
+  </section>
 
-    <!-- Projects Section -->
-    <section id="projects" class="projects">
-        <div class="container">
-            <h2 class="section-title">Featured Projects</h2>
-            
-            <div class="projects-grid">
-                <!-- Project 1 -->
-                <div class="project-card">
-                    <div class="project-image" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);"></div>
-                    <div class="project-content">
-                        <h3>E-Commerce Platform</h3>
-                        <p>A full-stack e-commerce solution built with React, Node.js, and MongoDB. Features include product catalog, shopping cart, secure checkout, and admin dashboard.</p>
-                        <div class="project-tags">
-                            <span>React</span>
-                            <span>Node.js</span>
-                            <span>MongoDB</span>
-                            <span>Stripe</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://github.com/nisrinelr/ecommerce" target="_blank">
-                                <i class="fab fa-github"></i> Code
-                            </a>
-                            <a href="#" target="_blank">
-                                <i class="fas fa-external-link-alt"></i> Demo
-                            </a>
-                        </div>
-                    </div>
-                </div>
+  <!-- LANGUAGES -->
+  <section>
+    <h2>Languages</h2>
+    <p>Arabic (native) · English (C1) · French (C1) · Spanish (beginner)</p>
+  </section>
 
-                <!-- Project 2 -->
-                <div class="project-card">
-                    <div class="project-image" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);"></div>
-                    <div class="project-content">
-                        <h3>Task Management App</h3>
-                        <p>A collaborative task management application with real-time updates, team collaboration features, and analytics dashboard built with Vue.js and Firebase.</p>
-                        <div class="project-tags">
-                            <span>Vue.js</span>
-                            <span>Firebase</span>
-                            <span>Tailwind CSS</span>
-                            <span>Real-time</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://github.com/nisrinelr/taskapp" target="_blank">
-                                <i class="fab fa-github"></i> Code
-                            </a>
-                            <a href="#" target="_blank">
-                                <i class="fas fa-external-link-alt"></i> Demo
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project 3 -->
-                <div class="project-card">
-                    <div class="project-image" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);"></div>
-                    <div class="project-content">
-                        <h3>Weather Analytics Dashboard</h3>
-                        <p>Real-time weather data visualization and analytics platform. Integrates multiple weather APIs and provides predictive insights using machine learning.</p>
-                        <div class="project-tags">
-                            <span>React</span>
-                            <span>D3.js</span>
-                            <span>Python</span>
-                            <span>API Integration</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://github.com/nisrinelr/weather-dash" target="_blank">
-                                <i class="fab fa-github"></i> Code
-                            </a>
-                            <a href="#" target="_blank">
-                                <i class="fas fa-external-link-alt"></i> Demo
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project 4 -->
-                <div class="project-card">
-                    <div class="project-image" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);"></div>
-                    <div class="project-content">
-                        <h3>Social Media Feed</h3>
-                        <p>Feature-rich social media platform with user authentication, post creation, commenting system, and real-time notifications using WebSockets.</p>
-                        <div class="project-tags">
-                            <span>React</span>
-                            <span>Express</span>
-                            <span>PostgreSQL</span>
-                            <span>WebSockets</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://github.com/nisrinelr/social-feed" target="_blank">
-                                <i class="fab fa-github"></i> Code
-                            </a>
-                            <a href="#" target="_blank">
-                                <i class="fas fa-external-link-alt"></i> Demo
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project 5 -->
-                <div class="project-card">
-                    <div class="project-image" style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);"></div>
-                    <div class="project-content">
-                        <h3>Learning Management System</h3>
-                        <p>Comprehensive LMS platform for online education with course management, video streaming, quizzes, and student progress tracking.</p>
-                        <div class="project-tags">
-                            <span>Vue.js</span>
-                            <span>Django</span>
-                            <span>PostgreSQL</span>
-                            <span>AWS S3</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://github.com/nisrinelr/lms" target="_blank">
-                                <i class="fab fa-github"></i> Code
-                            </a>
-                            <a href="#" target="_blank">
-                                <i class="fas fa-external-link-alt"></i> Demo
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project 6 -->
-                <div class="project-card">
-                    <div class="project-image" style="background: linear-gradient(135deg, #ff9a56 0%, #ff6a88 100%);"></div>
-                    <div class="project-content">
-                        <h3>Code Collaboration Tool</h3>
-                        <p>Real-time code editor and collaboration platform with syntax highlighting, version control integration, and team chat functionality.</p>
-                        <div class="project-tags">
-                            <span>TypeScript</span>
-                            <span>Node.js</span>
-                            <span>WebSockets</span>
-                            <span>Monaco Editor</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://github.com/nisrinelr/code-collab" target="_blank">
-                                <i class="fab fa-github"></i> Code
-                            </a>
-                            <a href="#" target="_blank">
-                                <i class="fas fa-external-link-alt"></i> Demo
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Experience Section -->
-    <section id="experience" class="experience">
-        <div class="container">
-            <h2 class="section-title">Professional Experience</h2>
-            
-            <div class="timeline">
-                <!-- Experience 1 -->
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <h3>Senior Full Stack Developer</h3>
-                        <p class="company">Tech Innovation Inc. | 2023 - Present</p>
-                        <p class="description">
-                            Lead development of scalable web applications serving 100k+ users. 
-                            Architected microservices infrastructure and mentored junior developers. 
-                            Improved application performance by 40% through optimization initiatives.
-                        </p>
-                        <ul class="achievements">
-                            <li>Designed and implemented microservices architecture</li>
-                            <li>Led cross-functional team of 5 developers</li>
-                            <li>Reduced deployment time from 30 mins to 5 mins</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- Experience 2 -->
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <h3>Full Stack Developer</h3>
-                        <p class="company">Creative Web Solutions | 2021 - 2023</p>
-                        <p class="description">
-                            Developed and maintained multiple client projects using modern tech stack. 
-                            Implemented responsive designs and optimized database queries. 
-                            Collaborated with designers and product managers on feature development.
-                        </p>
-                        <ul class="achievements">
-                            <li>Built 15+ full-stack applications for diverse clients</li>
-                            <li>Achieved 99.9% uptime on production servers</li>
-                            <li>Established development best practices and documentation</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- Experience 3 -->
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <h3>Junior Web Developer</h3>
-                        <p class="company">StartUp Hub | 2020 - 2021</p>
-                        <p class="description">
-                            Joined as junior developer and quickly progressed to handling independent projects. 
-                            Learned agile methodology and collaborated with experienced developers. 
-                            Contributed to open-source projects on GitHub.
-                        </p>
-                        <ul class="achievements">
-                            <li>Developed 5 client websites from scratch</li>
-                            <li>Implemented responsive design across all projects</li>
-                            <li>Contributed to 3 open-source projects</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- Experience 4 -->
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <h3>Freelance Developer</h3>
-                        <p class="company">Self-Employed | 2019 - 2020</p>
-                        <p class="description">
-                            Started freelance career while completing education. Built websites and 
-                            web applications for small businesses and startups. Developed strong client 
-                            communication and project management skills.
-                        </p>
-                        <ul class="achievements">
-                            <li>Managed 20+ freelance projects independently</li>
-                            <li>Maintained 4.9/5 client satisfaction rating</li>
-                            <li>Built diverse portfolio of projects</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="contact">
-        <div class="container">
-            <h2 class="section-title">Let's Work Together</h2>
-            <p class="contact-subtitle">Have a project in mind? Let's talk about how I can help.</p>
-            
-            <div class="contact-content">
-                <div class="contact-info">
-                    <div class="info-item">
-                        <i class="fas fa-envelope"></i>
-                        <div>
-                            <h4>Email</h4>
-                            <a href="mailto:contact@nisrine.dev">contact@nisrine.dev</a>
-                        </div>
-                    </div>
-                    <div class="info-item">
-                        <i class="fas fa-phone"></i>
-                        <div>
-                            <h4>Phone</h4>
-                            <a href="tel:+1234567890">+1 (234) 567-890</a>
-                        </div>
-                    </div>
-                    <div class="info-item">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <div>
-                            <h4>Location</h4>
-                            <p>San Francisco, CA</p>
-                        </div>
-                    </div>
-                </div>
-
-                <form class="contact-form" id="contactForm">
-                    <div class="form-group">
-                        <input type="text" id="name" placeholder="Your Name" required>
-                    </div>
-                    <div class="form-group">
-                        <input type="email" id="email" placeholder="Your Email" required>
-                    </div>
-                    <div class="form-group">
-                        <input type="text" id="subject" placeholder="Subject" required>
-                    </div>
-                    <div class="form-group">
-                        <textarea id="message" placeholder="Your Message" rows="5" required></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Send Message</button>
-                </form>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <p>&copy; 2026 Nisrine Elr. All rights reserved.</p>
-            <div class="footer-links">
-                <a href="https://github.com/nisrinelr" target="_blank">GitHub</a>
-                <a href="https://linkedin.com/in/nisrine-elr" target="_blank">LinkedIn</a>
-                <a href="https://twitter.com/nisrinelr" target="_blank">Twitter</a>
-            </div>
-        </div>
-    </footer>
-
-    <script src="script.js"></script>
+  <footer>
+    <p>Built with HTML + CSS · hosted on <a href="https://pages.github.com" target="_blank">GitHub Pages</a></p>
+  </footer>
+</div>
 </body>
 </html>
